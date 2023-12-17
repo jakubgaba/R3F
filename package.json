@@ -1,0 +1,33 @@
+{
+  "name": "react-three-fiber",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.1",
+    "vite": "^4.5.0"
+  },
+  "dependencies": {
+    "react": "18.2",
+    "react-dom": "18.2"
+  },
+  "description": "React three fiber app",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubgaba/R3F.git"
+  },
+  "keywords": [
+    "R3F"
+  ],
+  "author": "jakubgaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakubgaba/R3F/issues"
+  },
+  "homepage": "https://github.com/jakubgaba/R3F#readme"
+}
