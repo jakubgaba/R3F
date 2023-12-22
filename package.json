@@ -19,6 +19,7 @@
     "@react-three/fiber": "8.15",
     "react": "18.2",
     "react-dom": "18.2",
+    "sass": "^1.69.5",
     "three": "^0.158.0"
   },
   "description": "React three fiber app",

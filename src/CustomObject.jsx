@@ -18,7 +18,6 @@ export default function CustomObject() {
     }, [])
 
     useEffect(() => {
-        console.log(geometryRef.current)
         geometryRef.current.computeVertexNormals()
     },[])
 

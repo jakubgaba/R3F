@@ -1,0 +1,16 @@
+$phone: 600px;
+$tab-port: 900px;
+$tab-land: 1200px;
+$tab-jerk: 1400px;
+$big-desktop: 1800px;
+
+@function base-font-size($pixels) {
+    @return percentage(calc($pixels / 16px));
+}
+ 
+@mixin respond($breakpoint) {
+    // 16px is the default browser font size
+    @media (max-width: calc(calc($breakpoint / 16px) * 1em)) {
+        @content;
+    }
+}
