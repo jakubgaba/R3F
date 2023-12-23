@@ -65,20 +65,22 @@ export default function Experience() {
                 <planeGeometry />
                 {/* <meshStandardMaterial color='greenyellow' /> */}
                 <MeshReflectorMaterial
-                resolution={512}
+                    resolution={512}
+                    blur={[1000, 1000]}
+                    mixBlur={1}
+                    mirror={0.75}
                 />
             </mesh>
             <CustomObject />
             <Float>
                 <Text
-                    font="./bangers-v20-latin-regular.woff"
                     position-y={2}
                     textAlign="center"
                 >I love Maria</Text>
             </Float>
 
-            <Float ></Float>
-            
+
+
         </>
     );
 }
