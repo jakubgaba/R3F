@@ -1,8 +1,8 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree, extend } from "@react-three/fiber";
 import { useRef } from "react";
-import { Float, Text, OrbitControls, TransformControls, PivotControls, Html, MeshReflectorMaterial } from '@react-three/drei'
-import CustomObject from "./customObject";
-
+import { OrbitControls } from "@react-three/drei";
+import Cube from "./shapes/Cube";
+import { useControls } from "leva";
 /**
 extend({OrbitControls}) 
  const {camera, gl}= useThree();
@@ -11,13 +11,16 @@ extend({OrbitControls})
 This is used only for Orbit controls from @react-three/fiber
  *  */
 
+// <orbitControls args={[camera, gl.domElement]} />
+
 export default function Experience() {
 
-    const cubeRef = useRef()
     const groupRef = useRef()
     const sphereRef = useRef()
-
-
+    const controls = useControls({
+        position: -2
+    }) 
+   
 
     useFrame((state, delta) => {
         // cubeRef.current.rotation.y += delta
@@ -30,56 +33,25 @@ export default function Experience() {
 
     return (
         <>
-            <OrbitControls makeDefault />
+            <OrbitControls makeDefault/>
+
             <directionalLight position={[1, 2, 3]} intensity={4.5} />
             <ambientLight intensity={1.5} />
             <group ref={groupRef}>
 
-
                 <mesh ref={sphereRef} position-x={-2}>
                     <sphereGeometry />
                     <meshStandardMaterial color='red' />
-                    <Html
-                        position={[1, 1, 0]}
-                        wrapperClass="label"
-                        center
-                        distanceFactor={6}
-                        occlude={[sphereRef, cubeRef]}
-                    >Yeah</Html>
                 </mesh>
-                <TransformControls object={sphereRef} mode="translate" />
-
-                <PivotControls
-                    anchor={[0, 0, 0]}
-                    depthTest={false}
-                    lineWidth={4}
-                >
-                    <mesh ref={cubeRef} rotation-y={Math.PI * 0.25} position-x={2} scale={1.5}>
-                        <boxGeometry scale={1.5} />
-                        <meshStandardMaterial color='mediumpurple' />
-                    </mesh>
-                </PivotControls>
 
             </group>
+
+            <Cube/>
+
             <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={10}>
                 <planeGeometry />
-                {/* <meshStandardMaterial color='greenyellow' /> */}
-                <MeshReflectorMaterial
-                    resolution={512}
-                    blur={[1000, 1000]}
-                    mixBlur={1}
-                    mirror={0.75}
-                />
+                <meshStandardMaterial color='greenyellow'/>
             </mesh>
-            <CustomObject />
-            <Float>
-                <Text
-                    position-y={2}
-                    textAlign="center"
-                >I love Maria</Text>
-            </Float>
-
-
 
         </>
     );
